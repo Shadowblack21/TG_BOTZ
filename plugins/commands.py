@@ -26,7 +26,7 @@ async def start(client, message):
                     InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
                     InlineKeyboardButton('✪ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url="https://t.me/DTG_SUPPORT"),
-                    InlineKeyboardButton('⌬ Mᴏᴠɪᴇ Gʀᴏᴜᴘ', url="https://t.me/ipopcorn_movie_group")
+                    InlineKeyboardButton('🌸 Radhe Radhe 🌸', url="https://urlgeni.us/instagram/Kanha")
                 ],[
                     InlineKeyboardButton('✇ Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ✇', url=CHNL_LNK)
                   ]]
@@ -46,7 +46,7 @@ async def start(client, message):
                     InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
                     InlineKeyboardButton('🦋 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 🦋', url=CHNL_LNK),
-                    InlineKeyboardButton('✨ Mᴏᴠɪᴇ Gʀᴏᴜᴘ ✨', url="https://t.me/ipopcorn_movie_group")
+                    InlineKeyboardButton('✨ Radhe Radhe ✨', url="https://urlgeni.us/instagram/Kanha")
                 ],[
                     InlineKeyboardButton('👻 Hᴇʟᴘ', callback_data='help'),
                     InlineKeyboardButton('👾 Aʙᴏᴜᴛ', callback_data='about')
@@ -97,7 +97,7 @@ async def start(client, message):
                     InlineKeyboardButton('⤬ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ⤬', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
                     InlineKeyboardButton('🦋 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 🦋', url=CHNL_LNK),
-                    InlineKeyboardButton('✨ Mᴏᴠɪᴇ Gʀᴏᴜᴘ ✨', url="https://t.me/ipopcorn_movie_group")
+                    InlineKeyboardButton('✨ Radhe Radhe ✨', url="https://urlgeni.us/instagram/Kanha")
                 ],[
                     InlineKeyboardButton('👻 Hᴇʟᴘ', callback_data='help'),
                     InlineKeyboardButton('👾 Aʙᴏᴜᴛ', callback_data='about')
@@ -156,7 +156,7 @@ async def start(client, message):
                           InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
                           InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                        ],[
-                          InlineKeyboardButton("MY Owner", url="t.me/DTG_BOTS")
+                          InlineKeyboardButton("MY Owner", url="https://urlgeni.us/instagram/Kanha")
                          ]
                         ]
                     )
@@ -175,7 +175,7 @@ async def start(client, message):
                           InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
                           InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                        ],[
-                          InlineKeyboardButton("MY Owner", url="t.me/DTG_BOTS")
+                          InlineKeyboardButton("MY Owner", url="https://urlgeni.us/instagram/Kanha")
                          ]
                         ]
                     )
@@ -263,7 +263,7 @@ async def start(client, message):
             g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=allfiles_{file_id}", True)
         else:
             g = await get_shortlink(chat_id, f"https://telegram.me/{temp.U_NAME}?start=allfiles_{file_id}", False)
-        k = await client.send_message(chat_id=message.from_user.id,text=f"<b>Get All Files in a Single Click!!!\n\n📂 ʟɪɴᴋ ➠ : {g}\n\n<i>Note: This message is deleted in 5 mins to avoid copyrights. Save the link to Somewhere else</i></b>", reply_markup=InlineKeyboardMarkup(
+        k = await client.send_message(chat_id=message.from_user.id,text=f"<b>Get All Files in a Single Click!!!\n\n📂 ʟɪɴᴋ ➠ : {g}\n\n<i>Note: This message is deleted in 5 mins to avoid copyrights. Save the link to Somewhere else and please follow our insta page https://urlgeni.us/instagram/Kanha</i></b>", reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton('📂 Dᴏᴡɴʟᴏᴀᴅ Nᴏᴡ 📂', url=g)
@@ -339,7 +339,7 @@ async def start(client, message):
                       InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
                       InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                    ],[
-                      InlineKeyboardButton("MY Owner", url="t.me/KUSHALHK")
+                      InlineKeyboardButton("MY Owner", url="https://urlgeni.us/instagram/Kanha")
                      ]
                     ]
                 )
@@ -401,7 +401,7 @@ async def start(client, message):
                       InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
                       InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                    ],[
-                      InlineKeyboardButton("MY Owner", url="t.me/KUSHALHK")
+                      InlineKeyboardButton("MY Owner", url="https://urlgeni.us/instagram/Kanha")
                      ]
                     ]
                 )
@@ -461,7 +461,7 @@ async def start(client, message):
               InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=f'https://t.me/{SUPPORT_CHAT}'),
               InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
            ],[
-              InlineKeyboardButton("MY Owner", url="t.me/DTG_BOTS")
+              InlineKeyboardButton("MY Owner", url="https://urlgeni.us/instagram/Kanha")
              ]
             ]
         )
