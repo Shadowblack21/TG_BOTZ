@@ -464,40 +464,86 @@ async def get_shortlink(chat_id, link):
         if not IS_SHORTLINK:
             return link
             
-        # Make sure we're using the correct variable names
-        shortener = SHORTLINK_URL
-        api_key = SHORTLINK_API
+        # Get settings for this chat
+        settings = await get_settings(chat_id)
+        
+        # Determine which shortener to use (from settings or default)
+        if 'shortlink' in settings.keys():
+            shortener = settings['shortlink']
+            api_key = settings['shortlink_api']
+        else:
+            shortener = SHORTLINK_URL
+            api_key = SHORTLINK_API
         
         # Check if shortener settings exist
         if not shortener or not api_key:
             return link
-            
-        # Create shortener instance with correct parameters
-        shortzy = Shortzy(api_key, shortener)
         
+        # Handle HTTP/HTTPS conversion
+        https = link.split(":")[0]
+        if https == "http":
+            link = link.replace("http", "https")
+            
+        # Try primary shortener
         try:
-            # Remove the timeout parameter
-            shortened_link = await shortzy.convert(link)
-            if shortened_link:
-                return shortened_link
-            return link
+            # For adrinolinks.in and similar services that might be failing
+            if "adrinolinks.in" in shortener:
+                # Try direct API call with proper URL encoding
+                url = f'https://{shortener}/api'
+                params = {
+                    "api": api_key,
+                    "url": link,
+                }
+                
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(url, params=params, ssl=False) as response:
+                        if response.status == 200:
+                            data = await response.json()
+                            if data.get("status") == "success":
+                                return data.get("shortenedUrl")
+                        # If we get here, the request failed
+                        logger.error(f"Primary shortener failed with status {response.status}")
+                        # Continue to fallback
+            else:
+                # Use Shortzy for other services
+                shortzy = Shortzy(api_key=api_key, base_site=shortener)
+                shortened_link = await shortzy.convert(link)
+                if shortened_link:
+                    return shortened_link
         except Exception as e:
-            # Log the specific error
-            logging.error(f"Shortlink Error: {str(e)}")
-            # Try fallback shortener if available
-            try:
-                if SECOND_SHORTLINK_URL and SECOND_SHORTLINK_API:
+            logger.error(f"Shortlink Error: {str(e)}")
+            # Continue to fallback
+            
+        # Try fallback shortener
+        try:
+            if SECOND_SHORTLINK_URL and SECOND_SHORTLINK_API:
+                # Try a different approach for the fallback
+                if "adrinolinks.in" in SECOND_SHORTLINK_URL:
+                    # Try with different parameters format
+                    url = f'https://{SECOND_SHORTLINK_URL}/api'
+                    params = {
+                        "api": SECOND_SHORTLINK_API,
+                        "link": link,  # Some APIs use 'link' instead of 'url'
+                    }
+                    
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(url, params=params, ssl=False) as response:
+                            if response.status == 200:
+                                data = await response.json()
+                                if data.get("status") == "success":
+                                    return data.get("shortenedUrl")
+                else:
                     shortzy_backup = Shortzy(SECOND_SHORTLINK_API, SECOND_SHORTLINK_URL)
                     shortened_link = await shortzy_backup.convert(link)
                     if shortened_link:
                         return shortened_link
-            except Exception as e2:
-                logging.error(f"Backup shortener error: {str(e2)}")
-            
-            # Return original link if shortening fails
-            return link
+        except Exception as e2:
+            logger.error(f"Backup shortener error: {str(e2)}")
+        
+        # Return original link if all shortening attempts fail
+        return link
     except Exception as e:
-        logging.error(f"Error in get_shortlink: {str(e)}")
+        logger.error(f"Error in get_shortlink: {str(e)}")
         # Return original link if any error occurs
         return link
         
